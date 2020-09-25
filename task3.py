@@ -68,9 +68,10 @@ def main(func, r_a, r_b, N):
     plt.yscale("log")
     plt.show()
 
-#print(quad(func2, 0, 0.001))
-#print(int_simpson(func2, 0, 0.001, 2))
-#main(func1, -1, 1, 13)
-main(func2, 0.01, 1, 20)
+if __name__ == '__main__':
+    #print(quad(func2, 0, 0.001))
+    #print(int_simpson(func2, 0, 0.001, 2))
+    #main(func1, -1, 1, 13)
+    main(func2, 0.01, 1, 20)
 
 
