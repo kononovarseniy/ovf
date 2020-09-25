@@ -6,11 +6,12 @@ import matplotlib.pyplot as plt
 
 def generic_method(get_next, f, t0, t1, x0, n):
     ts, h = np.linspace(t0, t1, n, retstep=True)
-    xs = np.zeros(n)
-    xs[0] = x = x0
+    x = x0
+    xs = [x]
     for i, t in enumerate(ts[:-1]):
-        xs[i + 1] = x = get_next(f, t, x, h)
-    return ts, xs
+        x = get_next(f, t, x, h)
+        xs.append(x)
+    return ts, np.array(xs)
 
 def euler_get_next(f, t, x, h):
     return x + h * f(t, x)
