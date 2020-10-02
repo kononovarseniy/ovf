@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     def func(t, x):
         return -x
-    
+
     methods = [
         (euler, 'Euler'),
         (rk2, 'Runge-Kutta 2-nd order'),
@@ -61,6 +61,7 @@ if __name__ == '__main__':
         (rk4, 'Runge-Kutta 4-th order')
     ]
 
+    #results = [m(func, 0, 100, 1, 50) for m, _ in methods]
     results = [m(func, 0, 3, 1, 100) for m, _ in methods]
     ts = results[0][0]
     ss = solution(ts)
@@ -80,3 +81,4 @@ if __name__ == '__main__':
     plt.yscale('log')
     plt.legend()
     plt.show()
+
