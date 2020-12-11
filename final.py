@@ -18,9 +18,10 @@ def main():
         r2 = x ** 2 + y ** 2
         if r2 > 0.25:
             return 0
-        return 2 * exp(-1 / (1 - 4 * r2))
+        return 4 * exp(-1 / (1 - 4 * r2))
 
-    dt = 0.01
+    dt = 0.1
+    T = 0.4
 
     nx = 200
     ny = 200
@@ -29,7 +30,7 @@ def main():
     y0 = -L
     y1 = L
 
-    x_solvers = [Solver(x0, x1, nx, dt / 2, lambda x: 3) for _ in range(ny)]
+    x_solvers = [Solver(x0, x1, nx, dt / 2, lambda x: 1+x) for _ in range(ny)]
     y_solvers = [Solver(y0, y1, ny, dt / 2, lambda x: 0.5) for _ in range(nx)]
 
     xx, yy = np.meshgrid(x_solvers[0].xs, y_solvers[0].xs)
@@ -37,7 +38,7 @@ def main():
     vv = np.vectorize(v0, otypes=[float])(xx, yy)
 
     start = time()
-    for i in range(40):
+    for i in range(int(T/dt)):
         zz.append(np.copy(vv))
 
         for j, s in enumerate(x_solvers):
